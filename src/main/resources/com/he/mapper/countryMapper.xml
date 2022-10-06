@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.he.mapper.countryMapper">
+    <resultMap id="countrymap" type="country">
+      <id property="cid" column="cid"></id>
+      <result property="cname" column="cname"></result>
+     <collection   property="countrygetall" ofType="area" resultMap="com.he.mapper.areaMapper.areagetall">
+       <id  column="aid" property="aid"></id>
+       <result property="aname" column="aname"></result>
+       <result property="cid" column="cid"></result>
+
+     </collection>
+    </resultMap>
+  <insert id="countryinsert"></insert>
+  <update id="updatecountry"></update>
+  <delete id="deletecountrygetall" parameterType="int">
+    delete  from country where cityid =#{cityid}
+  </delete>
+    <delete id="deletecountryByid"></delete>
+
+    <select id="getallcountry" resultMap="countrymap">
+select *  from  country c inner join  area a on c.cid=a.cid inner join city ci  on a.aid=ci.aid;
+  </select>
+  <select id="areaselectById" resultType="com.he.pojo.area"></select>
+  <select id="findAllUserByPageF" resultType="com.he.pojo.area"></select>
+</mapper>

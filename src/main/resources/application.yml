@@ -1,0 +1,20 @@
+server:
+  port: 80
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sys?serverTimezone=UTC
+    username: root
+    password: "000000"
+
+mybatis:
+  type-aliases-package: com.he.pojo
+  mapper-locations:  classpath:com/he/mapper/*.xml
+
+pagehelper:
+  reasonable: true
+  support-methods-arguments: true
+  helper-dialect: mysql
+
+
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.he.mapper.areaMapper">
+
+  <resultMap id="areagetall" type="area">
+    <id property="aid" column="aid"></id>
+    <result property="aname" column="aname"></result>
+
+    <collection property="cityList" ofType="city">
+      <id property="cityid" column="cityid"></id>
+      <result property="cityname" column="cityname"></result>
+      <result property="citysize" column="citysize"></result>
+      <result property="aid" column="aid"></result>
+    </collection>
+
+  </resultMap>
+
+<!---->
+  <sql id="areaall">
+    a.aid,a.aname,ci.aid,ci.cityname,ci.citysize
+  </sql>
+<!--  插入数据   -->
+  <insert id="areainsert" parameterType="area">
+            insert into area(aid,aname,cid) values (#{aid},#{aname},#{cid})
+  </insert>
+
+<!-- 修改数据  -->
+  <update id="updatearea" parameterType="area">
+            update area set aname=#{aname} where  aid=#{aid} and cid=#{cid}
+  </update>
+
+<!--  根据id删除数据 -->
+  <delete id="deleteareaByid" parameterType="int">
+    delete from area  where aid=#{aid}
+  </delete>
+
+<!-- 根据id查询数据 -->
+  <select id="areaselectById" resultMap="areagetall">
+     select a.aid,a.aname,ci.cityname,ci.citysize from  area a inner join city ci where a.aid=#{aid} and ci.aid=#{aid}
+
+  </select>
+
+<!--分页查询数据-->
+  <select id="areagetall" resultMap="areagetall">
+    select   <include refid="areaall"></include> from  area  a inner join  city  ci on  a.aid = ci.aid
+  </select>
+</mapper>

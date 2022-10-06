@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.he.mapper.cityMapper">
+
+<resultMap id="citya" type="city">
+   <id property="cityid" column="cityid"></id>
+  <result property="cityname" column="cityname"></result>
+  <result property="citysize" column="citysize"></result>
+  <result property="aid" column="aid"></result>
+  <result property="area.aid" column="a"></result>
+  <association property="area" javaType="area">
+    <result property="cid" column="cid"></result>
+    <result property="aname" column="aname"></result>
+  </association>
+  </resultMap>
+  <insert id="cityinsert"></insert>
+  <delete id="deletecityByid" parameterType="int" >
+    delete from city where cityid=#{cityid}
+  </delete>
+
+  <select id="citygetall" resultMap="citya">
+   select *  from  area a ,city c where a.aid=c.aid
+  </select>
+</mapper>
