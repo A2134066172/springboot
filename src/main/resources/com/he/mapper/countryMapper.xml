@@ -24,6 +24,6 @@
     <select id="getallcountry" resultMap="countrymap">
 select *  from  country c inner join  area a on c.cid=a.cid inner join city ci  on a.aid=ci.aid;
   </select>
-  <select id="areaselectById" resultType="com.he.pojo.area"></select>
-  <select id="findAllUserByPageF" resultType="com.he.pojo.area"></select>
+  <select id="areaselectById" resultType="com.he.pojo.country"></select>
+  <select id="findAllUserByPageF" resultType="com.he.pojo.country"></select>
 </mapper>

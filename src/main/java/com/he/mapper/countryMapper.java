@@ -17,8 +17,8 @@ public interface countryMapper {
   //修改数据
   Boolean updatecountry(country country);
   //查询一条数据
-  List<area> areaselectById(int cid);
+  List<country> areaselectById(int cid);
 
   //分页查询数据
-  List<area> findAllUserByPageF(int pageNum,int pageSize);
+  List<country> findAllUserByPageF(int pageNum,int pageSize);
 }

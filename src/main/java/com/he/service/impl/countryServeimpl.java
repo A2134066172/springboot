@@ -16,4 +16,29 @@ public class countryServeimpl implements countryService {
     return countryMapper.getallcountry();
   }
 
+  @Override
+  public List<country> deletecountryByid(int aid) {
+     return null;
+  }
+
+  @Override
+  public Boolean countryinsert(country country) {
+    return null;
+  }
+
+  @Override
+  public Boolean updatecountry(country country) {
+    return null;
+  }
+
+  @Override
+  public List<country> areaselectById(int cid) {
+    return null;
+  }
+
+  @Override
+  public List<country> findAllUserByPageF(int pageNum, int pageSize) {
+    return null;
+  }
+
 }
